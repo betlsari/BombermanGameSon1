@@ -1,0 +1,2 @@
+﻿-- Database schema placeholder
+-- TODO: add SQL schema
