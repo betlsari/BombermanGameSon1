@@ -216,11 +216,10 @@ namespace BombermanGame.src.Core
 
 				Console.WriteLine("1. Start Single Player Game");
 				Console.WriteLine("2. Start Two Player Game (Local)");
-				Console.WriteLine("3. Multiplayer (Online)");
-				Console.WriteLine("4. Online Multiplayer (SignalR)");
-				Console.WriteLine("5. View My Scores");
-				Console.WriteLine("6. Settings");
-				Console.WriteLine("7. Logout");
+				Console.WriteLine("3. Online Multiplayer (SignalR)");
+				Console.WriteLine("4. View My Scores");
+				Console.WriteLine("5. Settings");
+				Console.WriteLine("6. Logout");
 				Console.Write("\nSelect option: ");
 
 				string? choice = Console.ReadLine();
@@ -234,18 +233,15 @@ namespace BombermanGame.src.Core
 						StartGame(user, false);
 						break;
 					case "3":
-						StartMultiplayerMenu(user);
-						break;
-					case "4":
 						ShowOnlineMultiplayerMenu(user);
 						break;
-					case "5":
+					case "4":
 						ShowMyScores(user);
 						break;
-					case "6":
+					case "5":
 						SettingsMenu(user);
 						break;
-					case "7":
+					case "6":
 						return;
 					default:
 						Console.WriteLine("\nInvalid option!");
@@ -530,158 +526,11 @@ namespace BombermanGame.src.Core
 			_lobbyDisplay.ShowErrorMessage("No available rooms found");
 		}
 
-		private void StartMultiplayerMenu(User user)
-		{
-			while (true)
-			{
-				Console.Clear();
-				Console.WriteLine("╔══════════════════════════════════════════════════════════════╗");
-				Console.WriteLine("║              MULTIPLAYER MODE (ONLINE)                       ║");
-				Console.WriteLine("╚══════════════════════════════════════════════════════════════╝\n");
+		
 
-				Console.WriteLine("⚠️  ÖNEMLİ NOTLAR:");
-				Console.WriteLine("   • Her iki oyuncu da aynı ağda olmalı");
-				Console.WriteLine("   • Windows Firewall izin vermelidir");
-				Console.WriteLine("   • Port 9999 açık olmalıdır\n");
+		
 
-				Console.WriteLine("1. Host Game (Sunucu Oluştur)");
-				Console.WriteLine("2. Join Game (Sunucuya Bağlan)");
-				Console.WriteLine("3. Network Test (Bağlantı Testi)");
-				Console.WriteLine("4. Back");
-				Console.Write("\nSelect option: ");
-
-				string? choice = Console.ReadLine();
-
-				switch (choice)
-				{
-					case "1":
-						HostMultiplayerGame(user);
-						break;
-					case "2":
-						JoinMultiplayerGame(user);
-						break;
-					case "3":
-						NetworkTest();
-						break;
-					case "4":
-						return;
-				}
-			}
-		}
-
-		private void NetworkTest()
-		{
-			Console.Clear();
-			Console.WriteLine("╔══════════════════════════════════════════════════════════════╗");
-			Console.WriteLine("║                    NETWORK TEST                              ║");
-			Console.WriteLine("╚══════════════════════════════════════════════════════════════╝\n");
-
-			try
-			{
-				var host = System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName());
-				Console.WriteLine("📡 Local IP Addresses:");
-				foreach (var ip in host.AddressList)
-				{
-					if (ip.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
-					{
-						Console.WriteLine($"   • {ip}");
-					}
-				}
-
-				Console.WriteLine("\n🔧 Firewall Kontrolü:");
-				Console.WriteLine("   Windows Defender Firewall'da bu uygulamaya izin verilmeli.");
-				Console.WriteLine("   Ayarlar → Güvenlik → Windows Güvenliği → Güvenlik Duvarı");
-
-				Console.WriteLine("\n🌐 Port Kontrolü:");
-				Console.WriteLine("   Port 9999 açık olmalı");
-				Console.WriteLine("   Test için: telnet <ip> 9999");
-
-				Console.WriteLine("\n💡 Sorun Giderme İpuçları:");
-				Console.WriteLine("   1. Her iki bilgisayar da aynı ağa bağlı mı?");
-				Console.WriteLine("   2. Firewall kapalı mı veya izin veriliyor mu?");
-				Console.WriteLine("   3. Antivirus engelliyor mu?");
-				Console.WriteLine("   4. VPN aktif mi? (Kapatın)");
-				Console.WriteLine("   5. Host önce sunucu başlatmalı");
-				Console.WriteLine("   6. Client doğru IP adresini girmeli");
-			}
-			catch (Exception ex)
-			{
-				Console.WriteLine($"\n❌ Test hatası: {ex.Message}");
-			}
-
-			Console.WriteLine("\nPress any key to continue...");
-			Console.ReadKey();
-		}
-
-		private void HostMultiplayerGame(User user)
-		{
-			var preferences = _preferencesRepository.GetByUserId(user.Id);
-			string theme = preferences?.Theme ?? "Desert";
-
-			Console.Clear();
-			Console.WriteLine("╔══════════════════════════════════════════════════════════════╗");
-			Console.WriteLine("║                      HOST SETUP                              ║");
-			Console.WriteLine("╚══════════════════════════════════════════════════════════════╝\n");
-
-			Console.WriteLine("Port numarası (varsayılan 9999):");
-			Console.Write("Port (Enter for default): ");
-			string? portInput = Console.ReadLine();
-
-			int port = 9999;
-			if (!string.IsNullOrEmpty(portInput) && int.TryParse(portInput, out int customPort))
-			{
-				port = customPort;
-			}
-
-			Console.WriteLine($"\n✅ Port: {port}");
-			Console.WriteLine("📡 Arkadaşınıza IP adresinizi verin");
-			Console.WriteLine("\n🔄 Sunucu başlatılıyor...\n");
-
-			Thread.Sleep(1000);
-
-			var multiplayerController = new MultiplayerGameController();
-			multiplayerController.StartAsHost(theme, port).Wait();
-		}
-
-		private void JoinMultiplayerGame(User user)
-		{
-			Console.Clear();
-			Console.WriteLine("╔══════════════════════════════════════════════════════════════╗");
-			Console.WriteLine("║                      JOIN SETUP                              ║");
-			Console.WriteLine("╚══════════════════════════════════════════════════════════════╝\n");
-
-			Console.WriteLine("Host IP adresini girin:");
-			Console.WriteLine("(Örnek: 192.168.1.100)\n");
-			Console.Write("IP Address: ");
-			string? hostIP = Console.ReadLine();
-
-			if (string.IsNullOrEmpty(hostIP))
-			{
-				Console.WriteLine("❌ IP adresi boş olamaz!");
-				Thread.Sleep(2000);
-				return;
-			}
-
-			Console.Write("\nPort (varsayılan 9999, Enter for default): ");
-			string? portInput = Console.ReadLine();
-
-			int port = 9999;
-			if (!string.IsNullOrEmpty(portInput) && int.TryParse(portInput, out int customPort))
-			{
-				port = customPort;
-			}
-
-			var preferences = _preferencesRepository.GetByUserId(user.Id);
-			string theme = preferences?.Theme ?? "Desert";
-
-			Console.WriteLine($"\n✅ Hedef: {hostIP}:{port}");
-			Console.WriteLine("🔄 Bağlanılıyor...\n");
-
-			Thread.Sleep(1000);
-
-			var multiplayerController = new MultiplayerGameController();
-			multiplayerController.ConnectToHost(theme, hostIP, port).Wait();
-		}
+	
 
 		private void StartGame(User user, bool singlePlayer)
 		{

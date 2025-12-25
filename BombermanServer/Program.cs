@@ -11,12 +11,13 @@ builder.Services.AddSignalR(options =>
 });
 
 builder.Services.AddSingleton<IRoomService, RoomService>();
-
+// Mevcut kodu bul ve þöyle deðiþtir:
 builder.Services.AddCors(options =>
 {
 	options.AddDefaultPolicy(policy =>
 	{
-		policy.WithOrigins("http://localhost:5000", "https://localhost:5001")
+		// SetIsOriginAllowed(origin => true) diyerek her yerden gelen baðlantýyý kabul ediyoruz.
+		policy.SetIsOriginAllowed(origin => true)
 			  .AllowAnyHeader()
 			  .AllowAnyMethod()
 			  .AllowCredentials();
