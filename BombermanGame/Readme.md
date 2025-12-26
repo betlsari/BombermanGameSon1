@@ -288,20 +288,17 @@ Kırılan duvarlardan **%30 şans** ile power-up düşer:
 
 ---
 
-### 👾 Düşman Sistemi
+### 👾 Enemy System
 
-#### Düşman Türleri:
+#### Enemy Types:
 
-| Sembol | Tür | Davranış | Zorluk | AI |
+| Symbol | Type | Behavior | Difficulty | AI |
 |--------|-----|----------|--------|-----|
-| `E` | Static | Sabit durur | ⭐ Kolay | Yok |
-| `C` | Chase | Basit takip | ⭐⭐ Orta | Basit |
-| `A` | Smart | A* ile akıllı takip | ⭐⭐⭐ Zor | A* 🌟 |
+| `E` | Static | Stands still | ⭐ Easy | None |
+| `C` | Chase | Simple chase | ⭐⭐ Medium | Simple |
+| `A` | Smart | Smart chase with A* | ⭐⭐⭐ Difficult | A* 🌟 |
 
-**Strategy Pattern** ile runtime'da değiştirilebilir.
-
-
-
+**Strategy Pattern** can be changed at runtime.
 ### 🎨 Theme System
 
 #### 1. Desert Theme
