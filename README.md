@@ -1,95 +1,93 @@
 # 🎮 Bomberman Multiplayer - Console Edition
 
-## 📋 Proje Bilgileri
+## 📋 Project Information
 
-**Proje Adı**: Bomberman Multiplayer (Console Edition)  
-**Ders**: Design Patterns - 2025  
-**Öğretim Görevlisi**: Prof. Dr. Doğan Aydın  
-**Üniversite**: İzmir Kâtip Çelebi Üniversitesi  
-**Geliştirici**: Betül Sarı  
-**Teslim Tarihi**: 28.12.2025 24:00  
-**Teslim Platformu**: İKCÜ UBS  
+**Project Name**: Bomberman Multiplayer (Console Edition)  
+**Course**: Design Patterns - 2025  
+**Instructor**: Prof. Dr. Doğan Aydın  
+**University**: Izmir Katip Celebi University  
+**Developers**: Betül Sarı, Ece Akın  
+**Submission Date**: December 28, 2025 24:00  
+**Submission Platform**: IKCU UBS  
 **Email**: dogan.aydin@ikc.edu.tr
 
 ---
 
-## 🎯 Proje Özeti
+## 🎯 Project Summary
 
-Bu proje, **10 farklı tasarım kalıbı** kullanarak geliştirilmiş konsol tabanlı bir Bomberman oyunudur. MVC mimarisi üzerine inşa edilmiş, SQLite veritabanı ile veri yönetimi yapan, çok oyunculu destekli profesyonel bir yazılım projesidir.
+This project is a console-based Bomberman game developed using **10 different design patterns**. Built on MVC architecture with SQLite database for data management and multiplayer support, it's a professional software project.
 
-### 🏆 Öne Çıkan Özellikler
-- ✅ **10 Design Pattern** implementasyonu (Gerekli: 8, Bonus: +2)
-- ✅ **A* Pathfinding** algoritması 
-- ✅ **SignalR Online Multiplayer** desteği 
-- ✅ **Multiplayer Lobby System** 
-- ✅ **3 Farklı Tema** sistemi (Adapter Pattern)
-- ✅ **Profesyonel UI/UX** 
-- ✅ **Sound System** (Observer Pattern entegrasyonu)
-- ✅ **SQLite Database** ile kalıcı veri
-- ✅ **BCrypt** şifre güvenliği
-- ✅ **Kapsamlı UML Diyagramları** (13+ diyagram)
-- ✅ **Undo/Redo** desteği (Command Pattern)
-
-
+### 🏆 Key Features
+- ✅ **10 Design Pattern** implementation
+- ✅ **A* Pathfinding** algorithm
+- ✅ **SignalR Online Multiplayer** support
+- ✅ **Multiplayer Lobby System**
+- ✅ **3 Different Themes** system (Adapter Pattern)
+- ✅ **Professional UI/UX**
+- ✅ **Sound System** (Observer Pattern integration)
+- ✅ **SQLite Database** for persistent data
+- ✅ **BCrypt** password security
+- ✅ **Comprehensive UML Diagrams** (13+ diagrams)
+- ✅ **Undo/Redo** support (Command Pattern)
 
 ---
 
-## 🛠️ Teknoloji Stack
+## 🛠️ Technology Stack
 
-| Kategori | Teknoloji | Versiyon | Amaç |
-|----------|-----------|----------|------|
-| **Dil** | C# | .NET 7.0+ | Ana programlama dili |
-| **Database** | SQLite | 3.x | Kalıcı veri depolama |
+| Category | Technology | Version | Purpose |
+|----------|-----------|---------|---------|
+| **Language** | C# | .NET 7.0+ | Main programming language |
+| **Database** | SQLite | 3.x | Persistent data storage |
 | **ORM** | Dapper | 2.1.66 | Object-Relational Mapping |
-| **Password Hash** | BCrypt.Net-Next | 4.0.3 | Güvenli şifre saklama |
+| **Password Hash** | BCrypt.Net-Next | 4.0.3 | Secure password storage |
 | **Network** | SignalR | 8.0.0 | Real-time multiplayer |
-| **Audio** | Console.Beep | Native | Ses efektleri |
+| **Audio** | Console.Beep | Native | Sound effects |
 
 ---
 
-## 📊 Tasarım Kalıpları (10 Adet)
+## 📊 Design Patterns (10 Total)
 
 ### 🔷 Creational Patterns (2/2)
 
 #### 1. **Factory Method Pattern** ⭐
-**Dosya**: `src/Patterns/Creational/Factory/`  
-**Amaç**: Farklı düşman türlerini dinamik olarak oluşturma
+**Location**: `src/Patterns/Creational/Factory/`  
+**Purpose**: Dynamically create different enemy types
 
-**Sınıflar**:
+**Classes**:
 - `IEnemyFactory` (Interface)
-- `StaticEnemyFactory` - Sabit düşman
-- `ChaseEnemyFactory` - Takipçi düşman
-- `SmartEnemyFactory` - Akıllı düşman (A*)
+- `StaticEnemyFactory` - Static enemy
+- `ChaseEnemyFactory` - Chasing enemy
+- `SmartEnemyFactory` - Smart enemy (A*)
 - `EnemyFactoryProvider` (Factory Provider)
 
-**Kullanım**:
+**Usage**:
 ```csharp
 IEnemyFactory factory = EnemyFactoryProvider.GetFactory("smart");
 Enemy enemy = factory.CreateEnemy(id, position);
 ```
 
-**Avantajlar**:
-- ✅ Yeni düşman tipleri eklemek kolay
-- ✅ Düşman yaratma mantığı izole
+**Advantages**:
+- ✅ Easy to add new enemy types
+- ✅ Enemy creation logic is isolated
 - ✅ Open/Closed Principle
 
 ---
 
 #### 2. **Singleton Pattern** ⭐
-**Dosya**: `src/Database/DatabaseManager.cs`, `src/Core/GameManager.cs`, `src/Audio/SoundManager.cs`  
-**Amaç**: Tek instance yönetimi (thread-safe)
+**Location**: `src/Database/DatabaseManager.cs`, `src/Core/GameManager.cs`, `src/Audio/SoundManager.cs`  
+**Purpose**: Single instance management (thread-safe)
 
-**3 Singleton Implementasyonu**:
-1. **DatabaseManager** - Veritabanı bağlantı yönetimi
-2. **GameManager** - Oyun durumu ve Observer hub
-3. **SoundManager** - Ses efektleri yönetimi
+**3 Singleton Implementations**:
+1. **DatabaseManager** - Database connection management
+2. **GameManager** - Game state and Observer hub
+3. **SoundManager** - Sound effects management
 
-**Özellikler**:
+**Features**:
 - Double-check locking
 - Lazy initialization
 - Thread-safe
 
-**Kullanım**:
+**Usage**:
 ```csharp
 var gameManager = GameManager.Instance;
 var dbManager = DatabaseManager.Instance;
@@ -101,17 +99,17 @@ var soundManager = SoundManager.Instance;
 ### 🔶 Structural Patterns (2/2)
 
 #### 3. **Decorator Pattern** ⭐
-**Dosya**: `src/Patterns/Structural/Decorator/`  
-**Amaç**: Runtime'da oyunculara dinamik özellikler ekleme
+**Location**: `src/Patterns/Structural/Decorator/`  
+**Purpose**: Add dynamic features to players at runtime
 
-**Sınıflar**:
+**Classes**:
 - `IPlayer` (Component Interface)
 - `PlayerDecorator` (Base Decorator)
-- `BombCountDecorator` (+bomba sayısı)
-- `BombPowerDecorator` (+bomba gücü)
-- `SpeedBoostDecorator` (+hız)
+- `BombCountDecorator` (+bomb count)
+- `BombPowerDecorator` (+bomb power)
+- `SpeedBoostDecorator` (+speed)
 
-**Kullanım**:
+**Usage**:
 ```csharp
 IPlayer player = new Player(1, "Hero", position);
 player = new BombCountDecorator(player, +2);
@@ -119,25 +117,25 @@ player = new SpeedBoostDecorator(player, +1);
 player = new BombPowerDecorator(player, +1);
 ```
 
-**Power-up Toplama Akışı**:
-1. Oyuncu power-up ile aynı pozisyona gelir
-2. `CheckPowerUpCollection()` tetiklenir
-3. `ApplyPowerUpWithDecorator()` decorator ekler
-4. Observer'lar bilgilendirilir
-5. UI güncellenir
+**Power-up Collection Flow**:
+1. Player moves to same position as power-up
+2. `CheckPowerUpCollection()` is triggered
+3. `ApplyPowerUpWithDecorator()` adds decorator
+4. Observers are notified
+5. UI updates
 
 ---
 
 #### 4. **Adapter Pattern** ⭐
-**Dosya**: `src/Patterns/Structural/Adapter/`  
-**Amaç**: Farklı tema sistemlerini ortak interface'den kullanma
+**Location**: `src/Patterns/Structural/Adapter/`  
+**Purpose**: Use different theme systems through common interface
 
-**Temalar**:
-- **Desert**: Sarı/kahverengi tonlar, kum/taş duvarlar
-- **Forest**: Yeşil tonlar, ağaç/odun duvarlar
-- **City**: Gri tonlar, beton/tuğla duvarlar
+**Themes**:
+- **Desert**: Yellow/brown tones, sand/stone walls
+- **Forest**: Green tones, tree/wood walls
+- **City**: Gray tones, concrete/brick walls
 
-**Adapter Yapısı**:
+**Adapter Structure**:
 ```
 ITheme (Target Interface)
 ├── DesertThemeAdapter → DesertTheme (Adaptee)
@@ -145,7 +143,7 @@ ITheme (Target Interface)
 └── CityThemeAdapter → CityTheme (Adaptee)
 ```
 
-**Kullanım**:
+**Usage**:
 ```csharp
 ITheme theme = ThemeFactory.GetTheme("desert");
 ConsoleColor wallColor = theme.GetBreakableWallColor();
@@ -157,16 +155,16 @@ char wallChar = theme.GetBreakableWallChar();
 ### 🔵 Behavioral Patterns (4/4)
 
 #### 5. **Strategy Pattern** ⭐
-**Dosya**: `src/Patterns/Behavioral/Strategy/`  
-**Amaç**: Düşman hareket algoritmalarını runtime'da değiştirme
+**Location**: `src/Patterns/Behavioral/Strategy/`  
+**Purpose**: Change enemy movement algorithms at runtime
 
-**Stratejiler**:
-- `StaticMovementStrategy` - Hiç hareket etmez
-- `RandomMovementStrategy` - Rastgele yön seçer
-- `ChaseMovementStrategy` - Basit takip (Manhattan distance)
-- `PathfindingMovementStrategy` - A* ile optimal yol bulma 🌟
+**Strategies**:
+- `StaticMovementStrategy` - Never moves
+- `RandomMovementStrategy` - Random direction
+- `ChaseMovementStrategy` - Simple chase (Manhattan distance)
+- `PathfindingMovementStrategy` - Optimal path with A* 🌟
 
-**Kullanım**:
+**Usage**:
 ```csharp
 enemy.MovementStrategy = new PathfindingMovementStrategy();
 enemy.Move(map, playerPosition);
@@ -175,20 +173,20 @@ enemy.Move(map, playerPosition);
 ---
 
 #### 6. **Observer Pattern** ⭐
-**Dosya**: `src/Patterns/Behavioral/Observer/`  
-**Amaç**: Oyun olaylarını dinleme ve tepki verme
+**Location**: `src/Patterns/Behavioral/Observer/`  
+**Purpose**: Listen to and react to game events
 
-**Event Tipleri**:
+**Event Types**:
 - `BombExploded`, `PlayerDied`, `PowerUpCollected`
 - `WallDestroyed`, `EnemyKilled`, `GameEnded`
 
-**Observer'lar**:
-- `ScoreObserver` - Skor takibi ve hesaplama
-- `StatsObserver` - İstatistik kaydetme
-- `UIObserver` - Konsol mesajları
-- `SoundObserver` - Ses efektleri 
+**Observers**:
+- `ScoreObserver` - Score tracking and calculation
+- `StatsObserver` - Statistics recording
+- `UIObserver` - Console messages
+- `SoundObserver` - Sound effects
 
-**Kullanım**:
+**Usage**:
 ```csharp
 gameManager.Attach(new ScoreObserver());
 gameManager.Attach(new SoundObserver());
@@ -200,22 +198,22 @@ gameManager.Notify(new GameEvent(EventType.WallDestroyed));
 GameManager (Subject) 
     → Notify(GameEvent) 
     → All Observers.Update(GameEvent)
-        → ScoreObserver: Skor güncelle
-        → StatsObserver: DB'ye kaydet
-        → UIObserver: Mesaj göster
-        → SoundObserver: Ses çal
+        → ScoreObserver: Update score
+        → StatsObserver: Save to DB
+        → UIObserver: Show message
+        → SoundObserver: Play sound
 ```
 
 ---
 
 #### 7. **State Pattern** ⭐
-**Dosya**: `src/Patterns/Behavioral/State/`  
-**Amaç**: Oyuncu durumlarını yönetme
+**Location**: `src/Patterns/Behavioral/State/`  
+**Purpose**: Manage player states
 
 **States**:
-- `AliveState` - Oyuncu canlı (normal oyun)
-- `DeadState` - Oyuncu öldü (hareket edemez)
-- `WinnerState` - Oyuncu kazandı (oyun bitti)
+- `AliveState` - Player alive (normal gameplay)
+- `DeadState` - Player dead (cannot move)
+- `WinnerState` - Player won (game over)
 
 **State Transitions**:
 ```
@@ -224,54 +222,54 @@ AliveState
     → Win() → WinnerState
 ```
 
-**Kullanım**:
+**Usage**:
 ```csharp
 player.State = new AliveState();
-player.State.Move(player, dx, dy, map); // Hareket eder
-player.State.TakeDamage(player); // DeadState'e geçer
-player.State.Move(player, dx, dy, map); // Hareket etmez
+player.State.Move(player, dx, dy, map); // Can move
+player.State.TakeDamage(player); // Transitions to DeadState
+player.State.Move(player, dx, dy, map); // Cannot move
 ```
 
 ---
 
 #### 8. **Command Pattern** ⭐
-**Dosya**: `src/Patterns/Behavioral/Command/`  
-**Amaç**: Oyuncu aksiyonlarını kapsülleme ve undo desteği
+**Location**: `src/Patterns/Behavioral/Command/`  
+**Purpose**: Encapsulate player actions and undo support
 
 **Commands**:
 - `ICommand` (Interface)
-- `MoveCommand` - Hareket komutu
-- `PlaceBombCommand` - Bomba koyma komutu
-- `CommandInvoker` - Komut yöneticisi
+- `MoveCommand` - Movement command
+- `PlaceBombCommand` - Bomb placement command
+- `CommandInvoker` - Command manager
 
-**Özellikler**:
-- ✅ Undo/Redo desteği
-- ✅ Komut geçmişi (history stack)
-- ✅ Maksimum 10 komut kayıt
+**Features**:
+- ✅ Undo/Redo support
+- ✅ Command history (history stack)
+- ✅ Maximum 10 command records
 
-**Kullanım**:
+**Usage**:
 ```csharp
 ICommand moveCmd = new MoveCommand(player, dx, dy, map);
 commandInvoker.ExecuteCommand(moveCmd);
-commandInvoker.UndoLastCommand(); // U tuşu ile geri al
+commandInvoker.UndoLastCommand(); // Undo with U key
 ```
 
 ---
 
-### 🔸 Architectural & Other Patterns 
+### 🔸 Architectural & Other Patterns
 
-#### 9. **Repository Pattern** ⭐ 
-**Dosya**: `src/Patterns/Repository/`  
-**Amaç**: Veritabanı erişimini soyutlama
+#### 9. **Repository Pattern** ⭐
+**Location**: `src/Patterns/Repository/`  
+**Purpose**: Abstract database access
 
 **Repositories**:
 - `IRepository<T>` (Generic Interface)
-- `UserRepository` - Kullanıcı CRUD
-- `StatsRepository` - İstatistik CRUD
-- `ScoreRepository` - Skor CRUD + Top 10
-- `PreferencesRepository` - Tercih CRUD
+- `UserRepository` - User CRUD
+- `StatsRepository` - Statistics CRUD
+- `ScoreRepository` - Score CRUD + Top 10
+- `PreferencesRepository` - Preferences CRUD
 
-**Kullanım**:
+**Usage**:
 ```csharp
 IRepository<User> userRepo = new UserRepository();
 User user = userRepo.GetById(1);
@@ -281,7 +279,7 @@ var topScores = scoreRepo.GetTopScores(10);
 statsRepo.IncrementWins(userId);
 ```
 
-**Avantajlar**:
+**Advantages**:
 - ✅ Data access abstraction
 - ✅ Testable code
 - ✅ Single Responsibility
@@ -289,14 +287,14 @@ statsRepo.IncrementWins(userId);
 
 ---
 
-#### 10. **MVC Pattern** ⭐ 
-**Dosya**: `src/MVC/`  
-**Amaç**: Mimari organizasyon (Separation of Concerns)
+#### 10. **MVC Pattern** ⭐
+**Location**: `src/MVC/`  
+**Purpose**: Architectural organization (Separation of Concerns)
 
-**Katmanlar**:
-- **Model**: `src/Models/`, `src/Core/` - İş mantığı ve veri
-- **View**: `src/UI/` - Görsel sunum
-- **Controller**: `src/MVC/Controllers/` - Akış kontrolü
+**Layers**:
+- **Model**: `src/Models/`, `src/Core/` - Business logic and data
+- **View**: `src/UI/` - Visual presentation
+- **Controller**: `src/MVC/Controllers/` - Flow control
 
 **MVC Flow**:
 ```
@@ -307,90 +305,90 @@ User Input
     → Console Output
 ```
 
-**Controller'lar**:
-- `GameController` - Tek/iki oyunculu oyun
+**Controllers**:
+- `GameController` - Single/two player game
 - `OnlineGameController` - Online multiplayer
-- `InputController` - Klavye input yönetimi
+- `InputController` - Keyboard input management
 
 ---
 
-## 🎮 Oyun Özellikleri
+## 🎮 Game Features
 
-### ⚡ Temel Mekanikler
-- ✅ **Tek oyunculu mod** (AI düşmanlara karşı)
-- ✅ **İki oyunculu mod** (Local multiplayer)
+### ⚡ Core Mechanics
+- ✅ **Single player mode** (against AI enemies)
+- ✅ **Two player mode** (Local multiplayer)
 - ✅ **Online multiplayer** (SignalR)
 - ✅ **Multiplayer Lobby System** (Host/Join)
-- ✅ **Klasik Bomberman kuralları**
-- ✅ **Bombalar 3 saniye** sonra patlar
-- ✅ **Patlamalar 4 yöne** yayılır
-- ✅ **Patlama duvar kontrolü** 
+- ✅ **Classic Bomberman rules**
+- ✅ **Bombs explode after 3 seconds**
+- ✅ **Explosions spread in 4 directions**
+- ✅ **Explosion wall control**
 
 ---
 
-### 🗺️ Harita Sistemi
+### 🗺️ Map System
 
-#### Duvar Türleri:
-| Sembol | Tür | Dayanıklılık | Açıklama |
-|--------|-----|--------------|----------|
-| `#` | Unbreakable | ∞ | Yok edilemez, patlama duvar |
-| `▒` | Breakable | 1 | Tek patlamayla yok olur |
-| `▓` | Hard Wall | 3 | 3 patlamayla yok olur |
-| ` ` | Empty Space | 0 | Yürünebilir alan |
+#### Wall Types:
+| Symbol | Type | Durability | Description |
+|--------|------|------------|-------------|
+| `#` | Unbreakable | ∞ | Cannot be destroyed, blocks explosions |
+| `▒` | Breakable | 1 | Destroyed with one explosion |
+| `▓` | Hard Wall | 3 | Takes 3 explosions to destroy |
+| ` ` | Empty Space | 0 | Walkable area |
 
-**Patlama Mekaniği** (DÜZELTİLDİ):
+**Explosion Mechanics**:
 ```csharp
 // src/Models/Map.cs - GetExplosionArea()
-// Patlama duvardan sonra durur:
-// Kırılamaz duvar: Durur, ötesine geçmez
-// Kırılabilir duvar: Yıkar ama ötesine geçmez
-// Boş alan: Devam eder
+// Explosion stops after walls:
+// Unbreakable wall: Stops, doesn't pass through
+// Breakable wall: Destroys but doesn't pass through
+// Empty space: Continues
 ```
 
-#### Harita Boyutları:
-- **Genişlik**: 21 karo
-- **Yükseklik**: 15 karo
-- **Seed**: Deterministik harita oluşturma (multiplayer sync)
+#### Map Dimensions:
+- **Width**: 21 tiles
+- **Height**: 15 tiles
+- **Seed**: Deterministic map generation (multiplayer sync)
 
 ---
 
-### 🎁 Power-up Sistemi
+### 🎁 Power-up System
 
-Kırılan duvarlardan **%30-100 şans** ile power-up düşer:
+Power-ups drop from destroyed walls with **30-100% chance**:
 
-| Sembol | Tür | Etki | Decorator |
-|--------|-----|------|-----------|
-| `B` | Bomb Count | Bomba sayısı +1 | BombCountDecorator |
-| `P` | Bomb Power | Bomba gücü +1 | BombPowerDecorator |
-| `S` | Speed Boost | Hız +1 | SpeedBoostDecorator |
+| Symbol | Type | Effect | Decorator |
+|--------|------|--------|-----------|
+| `B` | Bomb Count | Bomb count +1 | BombCountDecorator |
+| `P` | Bomb Power | Bomb power +1 | BombPowerDecorator |
+| `S` | Speed Boost | Speed +1 | SpeedBoostDecorator |
 
-**Decorator Pattern** ile runtime'da oyuncuya eklenir.
+Added to player at runtime using **Decorator Pattern**.
 
-**Power-up Akışı**:
+**Power-up Flow**:
 ```
-Duvar Yıkılır 
+Wall Destroyed 
     → Random() < 30% 
     → SpawnPowerUp() 
-    → Oyuncu Toplar 
+    → Player Collects 
     → ApplyPowerUpWithDecorator() 
-    → Decorator Eklenir 
+    → Decorator Added 
     → Observer.Notify()
-    → UI Güncellenir + Ses Çalar
+    → UI Updates + Sound Plays
 ```
 
 ---
 
-### 👾 Düşman Sistemi
+### 👾 Enemy System
 
-#### Düşman Türleri:
+#### Enemy Types:
 
-| Sembol | Tür | Davranış | Zorluk | AI | Strategy |
-|--------|-----|----------|--------|----|----------|
-| `E` | Static | Sabit durur | ⭐ Kolay | Yok | StaticMovementStrategy |
-| `C` | Chase | Basit takip | ⭐⭐ Orta | Manhattan | ChaseMovementStrategy |
-| `A` | Smart | A* akıllı takip | ⭐⭐⭐ Zor | A* | PathfindingMovementStrategy |
+| Symbol | Type | Behavior | Difficulty | AI | Strategy |
+|--------|------|----------|------------|-----|----------|
+| `E` | Static | Stands still | ⭐ Easy | None | StaticMovementStrategy |
+| `C` | Chase | Simple chase | ⭐⭐ Medium | Manhattan | ChaseMovementStrategy |
+| `A` | Smart | Smart A* chase | ⭐⭐⭐ Hard | A* | PathfindingMovementStrategy |
 
-**Strategy Pattern** ile runtime'da değiştirilebilir.
+Can be changed at runtime using **Strategy Pattern**.
 
 **Enemy Spawn Locations**:
 - Enemy 1 (Static): (10, 7)
@@ -399,70 +397,70 @@ Duvar Yıkılır
 
 ---
 
-### 🎨 Tema Sistemi
+### 🎨 Theme System
 
-#### 1. Desert Theme (Çöl Teması)
+#### 1. Desert Theme
 ```
-Renkler:
-- Zemin: Yellow (Sand)
-- Kırılabilir: DarkYellow (Stone)
-- Kırılamaz: Gray (Rock)
+Colors:
+- Ground: Yellow (Sand)
+- Breakable: DarkYellow (Stone)
+- Unbreakable: Gray (Rock)
 
-Karakterler:
-- Zemin: ░ (Light shade)
-- Kırılabilir: ▒ (Medium shade)
-- Kırılamaz: ▓ (Dark shade)
-```
-
-#### 2. Forest Theme (Orman Teması)
-```
-Renkler:
-- Zemin: Green (Grass)
-- Kırılabilir: DarkYellow (Log)
-- Kırılamaz: DarkGreen (Tree)
-
-Karakterler:
-- Zemin: · (Dot)
-- Kırılabilir: ≡ (Triple line)
-- Kırılamaz: ♣ (Club)
+Characters:
+- Ground: ░ (Light shade)
+- Breakable: ▒ (Medium shade)
+- Unbreakable: ▓ (Dark shade)
 ```
 
-#### 3. City Theme (Şehir Teması)
+#### 2. Forest Theme
 ```
-Renkler:
-- Zemin: Gray (Concrete)
-- Kırılabilir: Red (Brick)
-- Kırılamaz: DarkGray (Metal)
+Colors:
+- Ground: Green (Grass)
+- Breakable: DarkYellow (Log)
+- Unbreakable: DarkGreen (Tree)
 
-Karakterler:
-- Zemin: █ (Full block)
-- Kırılabilir: ▓ (Dark shade)
-- Kırılamaz: ■ (Square)
+Characters:
+- Ground: · (Dot)
+- Breakable: ≡ (Triple line)
+- Unbreakable: ♣ (Club)
+```
+
+#### 3. City Theme
+```
+Colors:
+- Ground: Gray (Concrete)
+- Breakable: Red (Brick)
+- Unbreakable: DarkGray (Metal)
+
+Characters:
+- Ground: █ (Full block)
+- Breakable: ▓ (Dark shade)
+- Unbreakable: ■ (Square)
 ```
 
 ---
 
-### 🔊 Ses Sistemi (**YENİ ÖZELLIK**)
+### 🔊 Sound System
 
-**Dosya**: `src/Audio/SoundManager.cs` (Singleton)
+**Location**: `src/Audio/SoundManager.cs` (Singleton)
 
-**Ses Tipleri**:
-- `BombPlace` - Bomba yerleştirme (400Hz, 100ms)
-- `BombExplode` - Patlama (200→150→100Hz)
-- `PowerUpCollect` - Power-up toplama (440→554→659Hz)
-- `PlayerDeath` - Oyuncu ölümü (800→600→400Hz)
-- `EnemyDeath` - Düşman ölümü (300→250Hz)
-- `WallBreak` - Duvar kırılma (350Hz, 120ms)
-- `MenuSelect` - Menü seçimi (600Hz, 80ms)
-- `Victory` - Zafer melodisi (C-D-E-G)
-- `GameOver` - Oyun bitiş melodisi
+**Sound Types**:
+- `BombPlace` - Bomb placement (400Hz, 100ms)
+- `BombExplode` - Explosion (200→150→100Hz)
+- `PowerUpCollect` - Power-up collection (440→554→659Hz)
+- `PlayerDeath` - Player death (800→600→400Hz)
+- `EnemyDeath` - Enemy death (300→250Hz)
+- `WallBreak` - Wall breaking (350Hz, 120ms)
+- `MenuSelect` - Menu selection (600Hz, 80ms)
+- `Victory` - Victory melody (C-D-E-G)
+- `GameOver` - Game over melody
 
-**Observer Pattern Entegrasyonu**:
+**Observer Pattern Integration**:
 ```csharp
-// SoundObserver GameManager'a eklenir
+// SoundObserver added to GameManager
 gameManager.Attach(new SoundObserver());
 
-// Her event ses çalar
+// Each event plays sound
 gameManager.Notify(EventType.BombExploded);
     → SoundObserver.Update() 
     → SoundManager.PlaySound(SoundType.BombExplode)
@@ -470,65 +468,65 @@ gameManager.Notify(EventType.BombExploded);
 
 ---
 
-## 🕹️ Oynanış
+## 🕹️ Gameplay
 
-### ⌨️ Kontroller
+### ⌨️ Controls
 
-#### Oyuncu 1:
+#### Player 1:
 ```
-W / ↑      : Yukarı
-S / ↓      : Aşağı
-A / ←      : Sol
-D / →      : Sağ
-SPACE      : Bomba Koy
-```
-
-#### Oyuncu 2 (İki oyunculu modda):
-```
-I          : Yukarı
-K          : Aşağı
-J          : Sol
-L          : Sağ
-ENTER      : Bomba Koy
+W / ↑      : Up
+S / ↓      : Down
+A / ←      : Left
+D / →      : Right
+SPACE      : Place Bomb
 ```
 
-#### Genel:
+#### Player 2 (Two player mode):
 ```
-ESC        : Duraklatma / Çıkış
-U          : Undo (Son hareketi geri al)
+I          : Up
+K          : Down
+J          : Left
+L          : Right
+ENTER      : Place Bomb
+```
+
+#### General:
+```
+ESC        : Pause / Exit
+U          : Undo (Undo last move)
 ```
 
 ---
 
-### 🏆 Kazanma Koşulları
+### 🏆 Win Conditions
 
-#### İki Oyunculu Mod:
-- ✅ Rakip oyuncuyu yok et
-- ✅ Tüm düşmanları yok et
+#### Two Player Mode:
+- ✅ Eliminate opponent player
+- ✅ Eliminate all enemies
 
-#### Tek Oyunculu Mod:
-- ✅ Tüm düşmanları yok et
-- ✅ Hayatta kal
-
----
-
-### 📊 Skor Sistemi
-
-| Eylem | Puan |
-|-------|------|
-| Duvar Yıkma | +10 |
-| Düşman Öldürme | +50 |
-| Power-up Toplama | +25 |
-
-**Observer Pattern** ile skor takibi yapılır.
+#### Single Player Mode:
+- ✅ Eliminate all enemies
+- ✅ Survive
 
 ---
 
-## 💾 Veritabanı Yapısı
+### 📊 Scoring System
 
-### 📋 Tablolar (4 adet)
+| Action | Points |
+|--------|--------|
+| Wall Destruction | +10 |
+| Enemy Kill | +50 |
+| Power-up Collection | +25 |
 
-#### 1. **Users** (Kullanıcılar)
+Score tracking done with **Observer Pattern**.
+
+---
+
+## 💾 Database Structure
+
+### 📋 Tables (4 total)
+
+#### 1. **Users**
 ```sql
 CREATE TABLE Users (
     Id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -538,7 +536,7 @@ CREATE TABLE Users (
 );
 ```
 
-#### 2. **GameStatistics** (Oyun İstatistikleri)
+#### 2. **GameStatistics**
 ```sql
 CREATE TABLE GameStatistics (
     Id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -550,7 +548,7 @@ CREATE TABLE GameStatistics (
 );
 ```
 
-#### 3. **HighScores** (Yüksek Skorlar)
+#### 3. **HighScores**
 ```sql
 CREATE TABLE HighScores (
     Id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -561,7 +559,7 @@ CREATE TABLE HighScores (
 );
 ```
 
-#### 4. **PlayerPreferences** (Oyuncu Tercihleri)
+#### 4. **PlayerPreferences**
 ```sql
 CREATE TABLE PlayerPreferences (
     Id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -572,28 +570,28 @@ CREATE TABLE PlayerPreferences (
 );
 ```
 
-### 🔐 Güvenlik
-- ✅ **BCrypt** ile şifre hash'leme (salt rounds: 12)
-- ✅ **SQL Injection** koruması (Dapper parametreli sorgular)
+### 🔐 Security
+- ✅ **BCrypt** password hashing (salt rounds: 12)
+- ✅ **SQL Injection** protection (Dapper parameterized queries)
 - ✅ **Foreign Key** constraints
 - ✅ **Unique** constraints
 
 ---
 
-## 🌐 Online Multiplayer 
+## 🌐 Online Multiplayer
 
-### 🎯 Özellikler
+### 🎯 Features
 - ✅ SignalR real-time communication
-- ✅ Host/Join room sistemi
-- ✅ Lobby system ile oyuncu listesi
+- ✅ Host/Join room system
+- ✅ Lobby system with player list
 - ✅ Latency measurement (ping)
 - ✅ JSON serialization protocol
 - ✅ Event-driven architecture
 - ✅ Connection management
 - ✅ Real-time game state synchronization
-- ✅ **Deterministic map generation** 
+- ✅ **Deterministic map generation**
 
-### 📡 Network Protokolü
+### 📡 Network Protocol
 
 #### Message Types:
 ```csharp
@@ -608,64 +606,64 @@ CREATE TABLE PlayerPreferences (
 - GetRoomList()
 ```
 
-#### Kullanım:
+#### Usage:
 
-**Host olarak:**
+**As Host:**
 ```csharp
-// 1. SignalR Server'a bağlan
+// 1. Connect to SignalR Server
 await signalRClient.ConnectAsync("http://localhost:5274");
 
-// 2. Room oluştur
+// 2. Create room
 var response = await signalRClient.CreateRoomAsync("My Room", "Player1", "Desert", 2);
 
-// 3. Client'ları bekle
-// 4. Oyunu başlat
+// 3. Wait for clients
+// 4. Start game
 await signalRClient.StartGameAsync(roomId);
 ```
 
-**Client olarak:**
+**As Client:**
 ```csharp
-// 1. SignalR Server'a bağlan
+// 1. Connect to SignalR Server
 await signalRClient.ConnectAsync("http://localhost:5274");
 
-// 2. Room listesini al
+// 2. Get room list
 var rooms = await signalRClient.GetRoomListAsync();
 
-// 3. Room'a katıl
+// 3. Join room
 await signalRClient.JoinRoomAsync(roomId, "Player2");
 
-// 4. Host'un başlatmasını bekle
+// 4. Wait for host to start
 ```
 
-### 🗺️ Map Synchronization (DÜZELTİLDİ)
+### 🗺️ Map Synchronization (FIXED)
 
-**Problem**: Client ve Host farklı haritalar oluşturuyordu.
+**Problem**: Client and Host were generating different maps.
 
-**Çözüm**:
+**Solution**:
 ```csharp
-// Host rastgele seed oluşturur
+// Host generates random seed
 _mapSeed = new Random().Next();
 
-// Client'a gönderir
+// Sends to client
 NetworkProtocol.CreateGameStartMessage(theme, _mapSeed);
 
-// Her iki taraf aynı seed ile harita oluşturur
+// Both sides create map with same seed
 new Map(21, 15, themeAdapter, _mapSeed);
 ```
 
 ---
 
-## 🚀 Kurulum ve Çalıştırma
+## 🚀 Installation and Running
 
-### ✅ Gereksinimler
+### ✅ Requirements
 ```
-- .NET 7.0 SDK veya üzeri
-- Visual Studio 2022 / VS Code / JetBrains Rider (opsiyonel)
+- .NET 7.0 SDK or higher
+- Visual Studio 2022 / VS Code / JetBrains Rider (optional)
 - Windows / Linux / macOS
-- 50 MB boş disk alanı
+- 50 MB free disk space
 ```
 
-### 📦 Hızlı Başlangıç
+### 📦 Quick Start
 
 #### Windows:
 ```batch
@@ -680,23 +678,23 @@ chmod +x setup.sh run.sh
 ./run.sh
 ```
 
-### 🔧 Manuel Kurulum
+### 🔧 Manual Installation
 
 ```bash
-# 1. Projeyi klonla veya indir
+# 1. Clone or download project
 cd BombermanGame
 
-# 2. Bağımlılıkları yükle
+# 2. Install dependencies
 dotnet restore
 
-# 3. Projeyi derle
+# 3. Build project
 dotnet build
 
-# 4. Çalıştır
+# 4. Run
 dotnet run
 ```
 
-### 📋 NuGet Paketleri
+### 📋 NuGet Packages
 
 ```xml
 <PackageReference Include="System.Data.SQLite" Version="1.0.119" />
@@ -707,38 +705,38 @@ dotnet run
 
 ---
 
-## 📁 Proje Yapısı
+## 📁 Project Structure
 
 ```
 BombermanMultiplayer/
 │
-├── 📁 BombermanGame/                   # Ana oyun projesi
+├── 📁 BombermanGame/                   # Main game project
 │   │
-│   ├── 📄 Program.cs                   # ⭐ Ana giriş noktası
-│   ├── 📄 BombermanGame.csproj        # Proje konfigürasyonu
-│   ├── 📄 bomberman.db                # SQLite veritabanı (runtime)
+│   ├── 📄 Program.cs                   # ⭐ Main entry point
+│   ├── 📄 BombermanGame.csproj        # Project configuration
+│   ├── 📄 bomberman.db                # SQLite database (runtime)
 │   │
 │   ├── 📁 src/
 │   │   │
-│   │   ├── 📁 Core/                    # Temel oyun mantığı
+│   │   ├── 📁 Core/                    # Core game logic
 │   │   │   ├── GameManager.cs         # ⭐ Singleton + Subject
-│   │   │   ├── MainMenu.cs            # Ana menü
+│   │   │   ├── MainMenu.cs            # Main menu
 │   │   │   └── LobbySystem.cs         # Multiplayer lobby
 │   │   │
-│   │   ├── 📁 Database/                # Veritabanı katmanı
+│   │   ├── 📁 Database/                # Database layer
 │   │   │   ├── DatabaseManager.cs     # ⭐ Singleton
-│   │   │   └── DatabaseSchema.sql     # SQL şema
+│   │   │   └── DatabaseSchema.sql     # SQL schema
 │   │   │
-│   │   ├── 📁 Models/                  # Domain modelleri
+│   │   ├── 📁 Models/                  # Domain models
 │   │   │   ├── Player.cs, Bomb.cs, Enemy.cs
 │   │   │   ├── Map.cs, Position.cs, PowerUp.cs
 │   │   │   ├── IWall.cs, UnbreakableWall.cs
 │   │   │   ├── BreakableWall.cs, HardWall.cs
 │   │   │   ├── EmptySpace.cs
-│   │   │   ├── 📁 Entities/            # Database entity'leri
-│   │   │   └── 📁 Network/             # Network DTO'lar
+│   │   │   ├── 📁 Entities/            # Database entities
+│   │   │   └── 📁 Network/             # Network DTOs
 │   │   │
-│   │   ├── 📁 Patterns/                # 🌟 Tasarım kalıpları
+│   │   ├── 📁 Patterns/                # 🌟 Design patterns
 │   │   │   ├── 📁 Creational/Factory/  # ⭐ Factory Method
 │   │   │   ├── 📁 Structural/Decorator/# ⭐ Decorator
 │   │   │   ├── 📁 Structural/Adapter/  # ⭐ Adapter
@@ -746,19 +744,19 @@ BombermanMultiplayer/
 │   │   │   ├── 📁 Behavioral/Observer/ # ⭐ Observer
 │   │   │   ├── 📁 Behavioral/State/    # ⭐ State
 │   │   │   ├── 📁 Behavioral/Command/  # ⭐ Command
-│   │   │   └── 📁 Repository/          # ⭐ Repository 
+│   │   │   └── 📁 Repository/          # ⭐ Repository
 │   │   │
-│   │   ├── 📁 MVC/Controllers/         # ⭐ MVC Pattern 
+│   │   ├── 📁 MVC/Controllers/         # ⭐ MVC Pattern
 │   │   ├── 📁 UI/                      # View layer
 │   │   ├── 📁 Network/                 # 🌐 SignalR client
-│   │   ├── 📁 Audio/                   # 🔊 Ses sistemi
-│   │   └── 📁 Utils/                   # A* algoritması
+│   │   ├── 📁 Audio/                   # 🔊 Sound system
+│   │   └── 📁 Utils/                   # A* algorithm
 │   │
-│   ├── 📁 assets/sounds/               # Ses dosyaları
+│   ├── 📁 assets/sounds/               # Sound files
 │   ├── 📄 setup.bat / setup.sh
 │   └── 📄 run.bat / run.sh
 │
-├── 📁 BombermanServer/                 # SignalR server projesi
+├── 📁 BombermanServer/                 # SignalR server project
 │   ├── 📄 Program.cs
 │   ├── 📁 Hubs/GameHub.cs              # SignalR hub
 │   ├── 📁 Services/RoomService.cs
@@ -768,20 +766,19 @@ BombermanMultiplayer/
 ├── 📄 BombermanMultiplayer.sln
 ├── 📄 .gitignore
 │
-└── 📁 Dokümantasyon/
-    ├── 📄 README.md                    # ⭐ Bu dosya
-    ├── 📄 DesignDocument.md            # Tasarım dokümanı
-    ├── 📄 UMLDiagrams.md               # UML diyagramları
-    ├── 📄 QUICKSTART.md                # Hızlı başlangıç
-    └── 📄 SubmissionCheckList.md       # Teslim kontrol listesi
-
-
+└── 📁 Documentation/
+    ├── 📄 README.md                    # ⭐ This file
+    ├── 📄 DesignDocument.md            # Design document
+    ├── 📄 UMLDiagrams.md               # UML diagrams
+    ├── 📄 QUICKSTART.md                # Quick start guide
+    └── 📄 SubmissionCheckList.md       # Submission checklist
+```
 
 ---
 
-## 🔧 Teknik Detaylar
+## 🔧 Technical Details
 
-### Veri Akışı
+### Data Flow
 
 ```
 ┌─────────────────────────────────────────────────────────┐
@@ -834,21 +831,17 @@ BombermanMultiplayer/
 └─────────────────────────────────────────────────────────┘
 ```
 
-
-
-
-
 ---
 
-## 🔗 Yararlı Bağlantılar
+## 🔗 Useful Links
 
-### Dokümantasyon
-- [Design Document](DesignDocument.md) - Detaylı tasarım açıklamaları
-- [UML Diagrams](UMLDiagrams.md) - Tüm UML diyagramları
-- [Quick Start](QUICKSTART.md) - 5 dakikada başlangıç
-- [Submission Checklist](SubmissionCheckList.md) - Teslim kontrol listesi
+### Documentation
+- [Design Document](DesignDocument.md) - Detailed design explanations
+- [UML Diagrams](UMLDiagrams.md) - All UML diagrams
+- [Quick Start](QUICKSTART.md) - Start in 5 minutes
+- [Submission Checklist](SubmissionCheckList.md) - Submission checklist
 
-### Referanslar
+### References
 - [Head First Design Patterns](https://www.oreilly.com/library/view/head-first-design/0596007124/)
 - [Refactoring Guru](https://refactoring.guru/design-patterns)
 - [Game Programming Patterns](https://gameprogrammingpatterns.com/)
@@ -856,37 +849,38 @@ BombermanMultiplayer/
 
 ---
 
-## ❓ Sıkça Sorulan Sorular (FAQ)
+## ❓ Frequently Asked Questions (FAQ)
 
-### Kurulum
+### Installation
 
-**S: .NET SDK nasıl yüklenir?**  
-C: [dotnet.microsoft.com/download](https://dotnet.microsoft.com/download) adresinden .NET 7.0 SDK'yı indirip kurun.
+**Q: How to install .NET SDK?**  
+A: Download and install .NET 7.0 SDK from [dotnet.microsoft.com/download](https://dotnet.microsoft.com/download).
 
-**S: Oyun başlamıyor?**  
-C: `dotnet restore`, `dotnet clean`, `dotnet build` komutlarını sırayla çalıştırın.
+**Q: Game won't start?**  
+A: Run `dotnet restore`, `dotnet clean`, `dotnet build` commands in order.
 
-### Oynanış
+### Gameplay
 
-**S: İki oyunculu kontroller?**  
-C: P1: WASD+Space | P2: IJKL+Enter
+**Q: Two player controls?**  
+A: P1: WASD+Space | P2: IJKL+Enter
 
-**S: Undo nasıl kullanılır?**  
-C: Oyun sırasında `U` tuşuna basın.
+**Q: How to use undo?**  
+A: Press `U` key during game.
 
 ### Multiplayer
 
-**S: Online multiplayer nasıl çalışır?**  
-C: Server'ı başlatın, Host room oluşturur, Client join yapar.
+**Q: How does online multiplayer work?**  
+A: Start server, Host creates room, Client joins.
 
 ---
 
-## 🎊 Final Notlar
+## 🎊 Final Notes
 
-Bu proje, teorik olarak öğrendiğimiz **Design Patterns** konularını pratik bir uygulamada göstermek için geliştirildi. Her pattern'in ne zaman, nasıl kullanılacağı ve hangi avantajları sağladığı gösterildi.
+This project was developed to demonstrate **Design Patterns** learned theoretically in a practical application. It shows when and how to use each pattern and what advantages they provide.
 
-**Oyunun tadını çıkarın ve pattern'leri öğrenin! 🎮💣**
+**Enjoy the game and learn the patterns! 🎮💣**
 
+---
 
 <div align="center">
 
@@ -894,8 +888,8 @@ Bu proje, teorik olarak öğrendiğimiz **Design Patterns** konularını pratik 
 
 **Design Patterns in Action**
 
-Betül Sarı,Ece Akın
-İzmir Kâtip Çelebi Üniversitesi  
+Betül Sarı, Ece Akın  
+Izmir Katip Celebi University  
 2025
 
 **Email**: dogan.aydin@ikc.edu.tr
