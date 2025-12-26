@@ -19,18 +19,18 @@ Bu proje, **10 farklı tasarım kalıbı** kullanarak geliştirilmiş konsol tab
 
 ### 🏆 Öne Çıkan Özellikler
 - ✅ **10 Design Pattern** implementasyonu (Gerekli: 8, Bonus: +2)
-- ✅ **A* Pathfinding** algoritması (BONUS +5)
-- ✅ **SignalR Online Multiplayer** desteği (BONUS +5)
-- ✅ **Multiplayer Lobby System** (BONUS +5)
+- ✅ **A* Pathfinding** algoritması 
+- ✅ **SignalR Online Multiplayer** desteği 
+- ✅ **Multiplayer Lobby System** 
 - ✅ **3 Farklı Tema** sistemi (Adapter Pattern)
-- ✅ **Profesyonel UI/UX** (BONUS +5)
+- ✅ **Profesyonel UI/UX** 
 - ✅ **Sound System** (Observer Pattern entegrasyonu)
 - ✅ **SQLite Database** ile kalıcı veri
 - ✅ **BCrypt** şifre güvenliği
 - ✅ **Kapsamlı UML Diyagramları** (13+ diyagram)
 - ✅ **Undo/Redo** desteği (Command Pattern)
 
-**TOPLAM PUAN**: 70 (kod) + 30 (dokümantasyon) + 30 (bonus) = **130/100** 🏆
+
 
 ---
 
@@ -186,7 +186,7 @@ enemy.Move(map, playerPosition);
 - `ScoreObserver` - Skor takibi ve hesaplama
 - `StatsObserver` - İstatistik kaydetme
 - `UIObserver` - Konsol mesajları
-- `SoundObserver` - Ses efektleri (**YENİ** 🔊)
+- `SoundObserver` - Ses efektleri 
 
 **Kullanım**:
 ```csharp
@@ -258,9 +258,9 @@ commandInvoker.UndoLastCommand(); // U tuşu ile geri al
 
 ---
 
-### 🔸 Architectural & Other Patterns (2/2 - BONUS)
+### 🔸 Architectural & Other Patterns 
 
-#### 9. **Repository Pattern** ⭐ (+5 BONUS)
+#### 9. **Repository Pattern** ⭐ 
 **Dosya**: `src/Patterns/Repository/`  
 **Amaç**: Veritabanı erişimini soyutlama
 
@@ -289,7 +289,7 @@ statsRepo.IncrementWins(userId);
 
 ---
 
-#### 10. **MVC Pattern** ⭐ (+5 BONUS)
+#### 10. **MVC Pattern** ⭐ 
 **Dosya**: `src/MVC/`  
 **Amaç**: Mimari organizasyon (Separation of Concerns)
 
@@ -324,7 +324,7 @@ User Input
 - ✅ **Klasik Bomberman kuralları**
 - ✅ **Bombalar 3 saniye** sonra patlar
 - ✅ **Patlamalar 4 yöne** yayılır
-- ✅ **Patlama duvar kontrolü** (DÜZELTİLDİ ✅)
+- ✅ **Patlama duvar kontrolü** 
 
 ---
 
@@ -580,7 +580,7 @@ CREATE TABLE PlayerPreferences (
 
 ---
 
-## 🌐 Online Multiplayer (BONUS +5)
+## 🌐 Online Multiplayer 
 
 ### 🎯 Özellikler
 - ✅ SignalR real-time communication
@@ -591,7 +591,7 @@ CREATE TABLE PlayerPreferences (
 - ✅ Event-driven architecture
 - ✅ Connection management
 - ✅ Real-time game state synchronization
-- ✅ **Deterministic map generation** (seed sync) ✅
+- ✅ **Deterministic map generation** 
 
 ### 📡 Network Protokolü
 
@@ -746,9 +746,9 @@ BombermanMultiplayer/
 │   │   │   ├── 📁 Behavioral/Observer/ # ⭐ Observer
 │   │   │   ├── 📁 Behavioral/State/    # ⭐ State
 │   │   │   ├── 📁 Behavioral/Command/  # ⭐ Command
-│   │   │   └── 📁 Repository/          # ⭐ Repository (BONUS)
+│   │   │   └── 📁 Repository/          # ⭐ Repository 
 │   │   │
-│   │   ├── 📁 MVC/Controllers/         # ⭐ MVC Pattern (BONUS)
+│   │   ├── 📁 MVC/Controllers/         # ⭐ MVC Pattern 
 │   │   ├── 📁 UI/                      # View layer
 │   │   ├── 📁 Network/                 # 🌐 SignalR client
 │   │   ├── 📁 Audio/                   # 🔊 Ses sistemi
@@ -775,13 +775,7 @@ BombermanMultiplayer/
     ├── 📄 QUICKSTART.md                # Hızlı başlangıç
     └── 📄 SubmissionCheckList.md       # Teslim kontrol listesi
 
-TOPLAM:
-- 📁 Klasörler: 25+
-- 📄 Dosyalar: 115+
-- 💻 Kod satırları: 8000+
-- ⭐ Design Patterns: 10
-- 🎮 Oynanabilir: ✅
-```
+
 
 ---
 
@@ -840,96 +834,9 @@ TOPLAM:
 └─────────────────────────────────────────────────────────┘
 ```
 
----
 
-## 🐛 Bilinen Sorunlar ve Çözümler
 
-### 1. ~~Map Senkronizasyon Hatası~~ ✅ **ÇÖZÜLDİ**
-**Problem**: Client ve Host farklı haritalar oluşturuyordu.  
-**Çözüm**: Deterministic map generation seed sync eklendi.
 
-### 2. ~~Patlama Duvardan Geçiyor~~ ✅ **ÇÖZÜLDİ**
-**Problem**: Bomba patlaması duvarlara rağmen devam ediyordu.  
-**Çözüm**: `GetExplosionArea()` metodunda duvar kontrolü eklendi.
-
-### 3. Power-up Çoklanma ✅ **ÇÖZÜLDİ**
-**Problem**: Aynı yerde birden fazla power-up spawn oluyordu.  
-**Çözüm**: `SpawnPowerUp()` içinde pozisyon kontrolü eklendi.
-
----
-
-## 💡 Kullanım Örnekleri
-
-### Pattern Kullanım Örnekleri
-
-#### 1. Factory Pattern Kullanımı
-```csharp
-// Oyun başlatılırken düşman spawn
-private void SpawnEnemies()
-{
-    var staticFactory = EnemyFactoryProvider.GetFactory("static");
-    var chaseFactory = EnemyFactoryProvider.GetFactory("chase");
-    var smartFactory = EnemyFactoryProvider.GetFactory("smart");
-    
-    _gameManager.Enemies.Add(staticFactory.CreateEnemy(1, new Position(10, 7)));
-    _gameManager.Enemies.Add(chaseFactory.CreateEnemy(2, new Position(15, 5)));
-    _gameManager.Enemies.Add(smartFactory.CreateEnemy(3, new Position(5, 10)));
-}
-```
-
-#### 2. Decorator Pattern Kullanımı
-```csharp
-// Power-up toplandığında
-private void ApplyPowerUpWithDecorator(Player player, PowerUp powerUp)
-{
-    IPlayer currentPlayer = _decoratedPlayers[player.Id];
-    
-    switch (powerUp.Type)
-    {
-        case PowerUpType.BombCount:
-            _decoratedPlayers[player.Id] = new BombCountDecorator(currentPlayer, 1);
-            break;
-    }
-}
-```
-
----
-
-## 📊 İstatistikler
-
-### Kod Metrikleri
-```
-Toplam Satır Sayısı:    8000+
-C# Dosyaları:           115+
-Klasörler:              25+
-Design Patterns:        10
-SOLID Principles:       ✅ Uygulandı
-Dokümantasyon:          5 MD dosyası
-UML Diyagramları:       13 adet
-```
-
----
-
-## 🎓 Akademik Değerlendirme
-
-### Puan Dağılımı
-
-| Kategori | Detay | Puan | Durum |
-|----------|-------|------|-------|
-| **Kaynak Kod** | | **70** | ✅ |
-| ├─ Pattern Implementation | 8 zorunlu + 2 bonus | 50 | ✅ |
-| ├─ Code Quality | SOLID, DRY, KISS | 10 | ✅ |
-| └─ Functionality | Oynanabilirlik | 10 | ✅ |
-| **Dokümantasyon** | | **30** | ✅ |
-| ├─ Pattern Explanation | DesignDocument.md | 20 | ✅ |
-| └─ UML Diagrams | UMLDiagrams.md | 10 | ✅ |
-| **Bonus Özellikler** | | **+30** | ✅ |
-| ├─ A* Pathfinding | AStar.cs | +5 | ✅ |
-| ├─ Advanced AI | Smart Enemy | +5 | ✅ |
-| ├─ Professional UI/UX | Renkli konsol | +5 | ✅ |
-| ├─ Multiplayer Lobby | SignalR | +5 | ✅ |
-| ├─ Additional Patterns | Repository + MVC | +10 | ✅ |
-| **TOPLAM** | | **130/100** | 🏆 |
 
 ---
 
@@ -980,14 +887,6 @@ Bu proje, teorik olarak öğrendiğimiz **Design Patterns** konularını pratik 
 
 **Oyunun tadını çıkarın ve pattern'leri öğrenin! 🎮💣**
 
----
-
-**Son Güncelleme**: 26 Aralık 2025  
-**Versiyon**: 1.0 Final  
-**Durum**: ✅ TESLİME HAZIR  
-**Toplam Puan**: **130/100** 🏆
-
----
 
 <div align="center">
 
@@ -995,7 +894,7 @@ Bu proje, teorik olarak öğrendiğimiz **Design Patterns** konularını pratik 
 
 **Design Patterns in Action**
 
-Made with ❤️ by Betül Sarı  
+Betül Sarı,Ece Akın
 İzmir Kâtip Çelebi Üniversitesi  
 2025
 
