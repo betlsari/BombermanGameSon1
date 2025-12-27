@@ -1,12 +1,18 @@
-﻿🚀 Bomberman Multiplayer - Quick Start Guide
-⚡ Quick Start
-Windows Users
-batch# 1. Setup
+﻿# 🚀 Bomberman Multiplayer - Quick Start Guide
+
+## ⚡ Quick Start
+
+### Windows Users
+```batch
+# 1. Setup
 setup.bat
 # 2. Run the Game
 run.bat
-Linux/Mac Users
-bash# 1. Grant execution permission
+```
+
+### Linux/Mac Users
+```bash
+# 1. Grant execution permission
 chmod +x setup.sh run.sh
 # 2. Setup
 ./setup.sh
@@ -65,63 +71,65 @@ ENTER   : Place Bomb
 ```
 ESC     : Return to Menu
 U       : Undo
+```
 
-🎯 Game Mechanics
-Basic Rules
+---
 
-Bombs explode after 3 seconds
-Explosion spreads in 4 directions
-Don't touch enemies!
-Destroy walls to find power-ups
+## 🎯 Game Mechanics
 
-Power-ups
+### Basic Rules
+1. Bombs explode after 3 seconds
+2. Explosion spreads in 4 directions
+3. Don't touch enemies!
+4. Destroy walls to find power-ups
 
-B = Bomb count +1
-P = Bomb power +1
-S = Speed increase +1
+### Power-ups
+- **B** = Bomb count +1
+- **P** = Bomb power +1
+- **S** = Speed increase +1
 
-Enemies
+### Enemies
+- **E** = Static (doesn't move)
+- **C** = Chaser (simple AI)
+- **A** = Smart (A* algorithm)
 
-E = Static (doesn't move)
-C = Chaser (simple AI)
-A = Smart (A* algorithm)
+---
 
+## 🌐 Multiplayer (Online)
 
-🌐 Multiplayer (Online)
-As Host
+### As Host
+1. Game Menu → 3. Multiplayer
+2. 1. Host Game
+3. Give your IP address to friend
+4. Wait...
 
-Game Menu → 3. Multiplayer
+### As Client
+1. Game Menu → 3. Multiplayer
+2. 2. Join Game
+3. Enter host's IP
+4. Connect!
 
-
-Host Game
-
-
-Give your IP address to friend
-Wait...
-
-As Client
-
-Game Menu → 3. Multiplayer
-
-
-Join Game
-
-
-Enter host's IP
-Connect!
-
-Find Your IP:
-bash# Windows
+**Find Your IP:**
+```bash
+# Windows
 ipconfig
 # Linux/Mac
 ifconfig
+```
 
-❓ Troubleshooting
-"dotnet not found"
-bash# Download .NET 7.0 SDK
+---
+
+## ❓ Troubleshooting
+
+### "dotnet not found"
+```bash
+# Download .NET 7.0 SDK
 https://dotnet.microsoft.com/download
-"Database error"
-bash# Reset database
+```
+
+### "Database error"
+```bash
+# Reset database
 del bomberman.db  # Windows
 rm bomberman.db   # Linux/Mac
 # Run again
@@ -140,33 +148,38 @@ dotnet run
 ✓ Is firewall allowing connection?
 ✓ Is the IP address correct?
 ✓ Did host start first?
+```
 
-📚 More Information
+---
 
-README.md - Overview and features
-DesignDocument.md - Design patterns explanation
-UMLDiagrams.md - UML diagrams
+## 📚 More Information
+- **README.md** - Overview and features
+- **DesignDocument.md** - Design patterns explanation
+- **UMLDiagrams.md** - UML diagrams
 
-💡 Tips
-Strategy
+## 💡 Tips
 
-Don't get cornered!
-Escape before bomb explodes
-Collect power-ups
-Learn enemy patterns
+### Strategy
+- Don't get cornered!
+- Escape before bomb explodes
+- Collect power-ups
+- Learn enemy patterns
 
-Increase Score
+### Increase Score
+- Destroy wall: +10
+- Kill enemy: +50
+- Collect power-up: +25
+- Finish quickly: Bonus!
 
-Destroy wall: +10
-Kill enemy: +50
-Collect power-up: +25
-Finish quickly: Bonus!
+---
 
+## 🏆 First Goals
+- [ ] Complete first game
+- [ ] Score 500+
+- [ ] Kill 5 enemies
+- [ ] Try all power-ups
+- [ ] Play online with friend
 
-🏆 First Goals
+---
 
- Complete first game
- Score 500+
- Kill 5 enemies
- Try all power-ups
- Play online with friend
+**Enjoy the game! 🎮💣**
