@@ -838,7 +838,10 @@ BombermanMultiplayer/
 ### Documentation
 - [Quick Start](QUICKSTART.md) - Start in 5 minutes
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 287e9ab842d474d3bb411bf003f41b0b4836e020
 
 ### References
 - [Head First Design Patterns](https://www.oreilly.com/library/view/head-first-design/0596007124/)
